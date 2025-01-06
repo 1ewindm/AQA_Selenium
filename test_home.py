@@ -8,10 +8,17 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-options = Options()
-service = Service(executable_path=ChromeDriverManager().install())
+link = "https://google.com"
 
-driver = webdriver.Chrome(service=service)
+@pytest.fixture
+def driver():
+    print("\nstart browser for test..")
+    options = Options()
+    service = Service(executable_path=ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service)
+    return driver
 
-def test_navigate():
-    driver.get("https://google.com")
+class TestMainPage1():
+    # вызываем фикстуру в тесте, передав ее как параметр
+    def test_guest_should_see_login_link(self, driver):
+        driver.get(link)
