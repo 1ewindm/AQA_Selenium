@@ -1,24 +1,11 @@
-import selenium
+from base.base_test import BaseTest
 import pytest
 import time
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+
 
 link = "https://google.com"
 
-@pytest.fixture
-def driver():
-    print("\nstart browser for test..")
-    options = Options()
-    service = Service(executable_path=ChromeDriverManager().install())
-    browser = webdriver.Chrome(service=service)
-    return browser
+class TestMainPage1(BaseTest):
 
-class TestMainPage1():
-    # вызываем фикстуру в тесте, передав ее как параметр
     def test_guest_should_see_login_link(self, driver):
         driver.get(link)
