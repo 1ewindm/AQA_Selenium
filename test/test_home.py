@@ -15,8 +15,8 @@ def driver():
     print("\nstart browser for test..")
     options = Options()
     service = Service(executable_path=ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service)
-    return driver
+    browser = webdriver.Chrome(service=service)
+    return browser
 
 class TestMainPage1():
     # вызываем фикстуру в тесте, передав ее как параметр
