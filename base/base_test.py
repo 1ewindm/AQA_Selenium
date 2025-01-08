@@ -3,6 +3,7 @@ import pytest
 from pages.login_page import LoginPage
 from config.data import Data
 
+
 class BaseTest:
 
     data: Data
